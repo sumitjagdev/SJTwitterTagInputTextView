@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SJTwitterTagInputTextView_Example' do
+  pod 'SJTwitterTagInputTextView', :path => '../'
+
+  target 'SJTwitterTagInputTextView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
