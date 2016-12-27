@@ -8,14 +8,14 @@
 
 import UIKit
 
-typealias SJ_CompletionHandler = ( isSuccess: Bool,  error: NSError?,  response: NSDictionary?)->Void
+public typealias SJ_CompletionHandler = ( isSuccess: Bool,  error: NSError?,  response: NSDictionary?)->Void
 
-protocol SJTwitterTagInputTextViewDelegate: class {
+public protocol SJTwitterTagInputTextViewDelegate: class {
     func didSearchWithHashTag(tagString: String)
     func didSearchWithAtTag(tagString: String)
 }
 
-class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
+public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBInspectable var textViewBackgroundColor : UIColor = UIColor.whiteColor() {
         didSet {
@@ -46,7 +46,7 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
     
     var isAtTag : Bool = false
     
-    var allObjectList : [String] = [] {
+    public var allObjectList : [String] = [] {
         didSet {
             if resultTableView != nil {
                 filteredObjectList = allObjectList
@@ -57,14 +57,14 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
     
     var filteredObjectList : [String] = []
     
-    weak var delegate: SJTwitterTagInputTextViewDelegate?
+    public weak var delegate: SJTwitterTagInputTextViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -98,7 +98,7 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
         resultTableView.backgroundColor = UIColor.whiteColor()
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         resultTableView.userInteractionEnabled = true
         resultTableView.allowsSelection = true
@@ -137,14 +137,14 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
         resultTableView.reloadData()
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         
         
         return true
     }
     
     
-    func textViewDidChange(textView: UITextView) {
+    public func textViewDidChange(textView: UITextView) {
         var currentWord = textView.getCurrentWord()
         currentWord = currentWord.stringByReplacingOccurrencesOfString("\n", withString: " ")
         
@@ -168,7 +168,7 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
         textView.validateForTagsColor()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         if filteredObjectList.count > 0 {
             if heightConstraintOfSelf != nil && heightConstraintOfTextView != nil {
@@ -186,7 +186,7 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell : UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
         
@@ -205,7 +205,7 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if filteredObjectList.count > indexPath.row {
             
             let replacementString = filteredObjectList[indexPath.row]
@@ -222,7 +222,7 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 25
     }
     func callServiceFor(hashTagString : String) {
@@ -258,14 +258,14 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
         
     }
     
-    func getAllAtTags() -> [String] {
+    public func getAllAtTags() -> [String] {
         if textView == nil {
             return []
         }
         return textView.getAllAtTags()
     }
     
-    func getAllHashTags() -> [String] {
+    public func getAllHashTags() -> [String] {
         if textView == nil {
             return []
         }
@@ -280,7 +280,7 @@ class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSour
 //============================================================
 
 extension String {
-    func countryName() -> String {
+    public func countryName() -> String {
         if let name = (NSLocale.currentLocale() as NSLocale).displayNameForKey(NSLocaleCountryCode, value: self){
             // Country name was found
             return name

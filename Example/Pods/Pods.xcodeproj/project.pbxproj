@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		041340F91E1247FE00AEC7E1 /* SJTwitterTagInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041340F81E1247FE00AEC7E1 /* SJTwitterTagInputTextView.swift */; };
 		4ECC135750259F9779693A4A5723691A /* Pods-SJTwitterTagInputTextView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CA8D6B28E49E2F8CBFC43101D07B5B /* Pods-SJTwitterTagInputTextView_Tests-dummy.m */; };
 		560149272F7E39CDCB0A30E3BBA4F1BE /* Pods-SJTwitterTagInputTextView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E57AEF30102647C1D5126F1BBDB5D0D0 /* Pods-SJTwitterTagInputTextView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E3FDD94CA7CD796780270CD2D46B42D /* SJTwitterTagInputTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8347C03BA25526CA6D1AC6AC2FEFF5 /* SJTwitterTagInputTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		884A3BE9BDF6526E216840F32EAD8023 /* Pods-SJTwitterTagInputTextView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA978DCF1C308877950581F1EF49F35 /* Pods-SJTwitterTagInputTextView_Example-dummy.m */; };
+		8B3691C10B11811F9DC8B38C7BEA910F /* SJTwitterTagInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45761F70D261DC6CFF3AE8F855B90F /* SJTwitterTagInputTextView.swift */; };
 		B21000A104C347266547425C83AA5C7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		B792A827D95856381566B5C5DCA6BC14 /* SJTwitterTagInputTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C6EBA55357EDDD26CF94FBAED4D02C /* SJTwitterTagInputTextView-dummy.m */; };
 		C8F17FBDFED542EB2D6C7EF20C9DF19B /* Pods-SJTwitterTagInputTextView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D19CFCF606EF99D8453E920E8296D9E5 /* Pods-SJTwitterTagInputTextView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E97DEF8F5864B75A0B80BF15429DC519 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		F70C0613AFD4D68980FD751D394BFE93 /* SJTwitterTagInputTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C6EBA55357EDDD26CF94FBAED4D02C /* SJTwitterTagInputTextView-dummy.m */; };
 		FB806A7AD3084BE33BFD98D0E351FB70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,38 +30,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		041340F81E1247FE00AEC7E1 /* SJTwitterTagInputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJTwitterTagInputTextView.swift; sourceTree = "<group>"; };
 		0A4DA8CFC7E3FBFB4CF5A06084DDC84B /* Pods-SJTwitterTagInputTextView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SJTwitterTagInputTextView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		15CA8D6B28E49E2F8CBFC43101D07B5B /* Pods-SJTwitterTagInputTextView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SJTwitterTagInputTextView_Tests-dummy.m"; sourceTree = "<group>"; };
 		1643D5C4F0172753C9D7348156375095 /* Pods-SJTwitterTagInputTextView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SJTwitterTagInputTextView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		17C8BC49415699C7BA79139655BDBF39 /* Pods-SJTwitterTagInputTextView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SJTwitterTagInputTextView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		1CA978DCF1C308877950581F1EF49F35 /* Pods-SJTwitterTagInputTextView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SJTwitterTagInputTextView_Example-dummy.m"; sourceTree = "<group>"; };
-		3827BD23FAD71F5CBC558F371332D2BF /* Pods-SJTwitterTagInputTextView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SJTwitterTagInputTextView_Example.modulemap"; sourceTree = "<group>"; };
+		3827BD23FAD71F5CBC558F371332D2BF /* Pods-SJTwitterTagInputTextView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SJTwitterTagInputTextView_Example.modulemap"; sourceTree = "<group>"; };
 		43C6EBA55357EDDD26CF94FBAED4D02C /* SJTwitterTagInputTextView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SJTwitterTagInputTextView-dummy.m"; sourceTree = "<group>"; };
-		4F205647E03A4ADE7B3736B1D4BB6260 /* SJTwitterTagInputTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SJTwitterTagInputTextView.modulemap; sourceTree = "<group>"; };
-		5CADCAEB72F60AA7B14A23D06FE1EED3 /* Pods_SJTwitterTagInputTextView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SJTwitterTagInputTextView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F205647E03A4ADE7B3736B1D4BB6260 /* SJTwitterTagInputTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SJTwitterTagInputTextView.modulemap; sourceTree = "<group>"; };
+		5CADCAEB72F60AA7B14A23D06FE1EED3 /* Pods_SJTwitterTagInputTextView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SJTwitterTagInputTextView_Tests.framework; path = "Pods-SJTwitterTagInputTextView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8347C03BA25526CA6D1AC6AC2FEFF5 /* SJTwitterTagInputTextView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SJTwitterTagInputTextView-umbrella.h"; sourceTree = "<group>"; };
 		630DD1A37107429B3F38F9224A841DEB /* Pods-SJTwitterTagInputTextView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SJTwitterTagInputTextView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6D45761F70D261DC6CFF3AE8F855B90F /* SJTwitterTagInputTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SJTwitterTagInputTextView.swift; sourceTree = "<group>"; };
 		6E1EBF5D9A5C5C3C820D6756FF9DA3B6 /* Pods-SJTwitterTagInputTextView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SJTwitterTagInputTextView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		72A696CDB84EC0E939A67C1C7E49841E /* Pods-SJTwitterTagInputTextView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SJTwitterTagInputTextView_Tests-resources.sh"; sourceTree = "<group>"; };
 		87F4F2BF00229DB3BDC550E6FDCF9E49 /* SJTwitterTagInputTextView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SJTwitterTagInputTextView-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A110DB2189F2E5AE0AE450D1B7BF7CB4 /* Pods-SJTwitterTagInputTextView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SJTwitterTagInputTextView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		ABC29003634E798B5B43A947E8E28A34 /* Pods-SJTwitterTagInputTextView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SJTwitterTagInputTextView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AF3EF6068E63D7C8DD513C03823C4E87 /* Pods-SJTwitterTagInputTextView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SJTwitterTagInputTextView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9073088A0B7E4EDE47576281079E736 /* Pods-SJTwitterTagInputTextView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SJTwitterTagInputTextView_Example-resources.sh"; sourceTree = "<group>"; };
 		B94E5C3CA78E0C4D51F2D0214C1931B9 /* SJTwitterTagInputTextView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SJTwitterTagInputTextView.xcconfig; sourceTree = "<group>"; };
 		B9CE092CC7275ED3BEF44A65E4A033EA /* Pods-SJTwitterTagInputTextView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SJTwitterTagInputTextView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		BE31BC1CA8DE8EAF76EB5C9352F6FF8C /* Pods_SJTwitterTagInputTextView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SJTwitterTagInputTextView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE31BC1CA8DE8EAF76EB5C9352F6FF8C /* Pods_SJTwitterTagInputTextView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SJTwitterTagInputTextView_Example.framework; path = "Pods-SJTwitterTagInputTextView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C110FC88C458802F2DAF601A4BDBB339 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8F6A1A5E84A4250AAB6A3967ECE6AA1 /* Pods-SJTwitterTagInputTextView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SJTwitterTagInputTextView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CCB37739E43EAE1F2680060EE9844787 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D19CFCF606EF99D8453E920E8296D9E5 /* Pods-SJTwitterTagInputTextView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SJTwitterTagInputTextView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		DD99437DF2FBAAAA65C9C5BE8250C3C3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2386F767DD64E291FEA041088121E0D /* SJTwitterTagInputTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SJTwitterTagInputTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2386F767DD64E291FEA041088121E0D /* SJTwitterTagInputTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SJTwitterTagInputTextView.framework; path = SJTwitterTagInputTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57AEF30102647C1D5126F1BBDB5D0D0 /* Pods-SJTwitterTagInputTextView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SJTwitterTagInputTextView_Example-umbrella.h"; sourceTree = "<group>"; };
-		F7E1AF2793198FB567493C7C1C04CA0C /* Pods-SJTwitterTagInputTextView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SJTwitterTagInputTextView_Tests.modulemap"; sourceTree = "<group>"; };
+		F7E1AF2793198FB567493C7C1C04CA0C /* Pods-SJTwitterTagInputTextView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SJTwitterTagInputTextView_Tests.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +157,15 @@
 			path = "Target Support Files/Pods-SJTwitterTagInputTextView_Tests";
 			sourceTree = "<group>";
 		};
+		8FF62DC95A8F0C2B5ED932742EF950DA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6D45761F70D261DC6CFF3AE8F855B90F /* SJTwitterTagInputTextView.swift */,
+			);
+			name = Classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		97E51614D025FA6BC1661AEEE374B079 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,19 +192,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D096D2163916308835B1C8F0496FCEB9 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				041340F81E1247FE00AEC7E1 /* SJTwitterTagInputTextView.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		DA03B6E050616DEDF5E049715A2C2685 /* SJTwitterTagInputTextView */ = {
 			isa = PBXGroup;
 			children = (
-				D096D2163916308835B1C8F0496FCEB9 /* Classes */,
+				8FF62DC95A8F0C2B5ED932742EF950DA /* Classes */,
 			);
+			name = SJTwitterTagInputTextView;
 			path = SJTwitterTagInputTextView;
 			sourceTree = "<group>";
 		};
@@ -273,7 +275,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5ACFC69B6DAB9E9C419607C929EF4FCB /* Build configuration list for PBXNativeTarget "SJTwitterTagInputTextView" */;
 			buildPhases = (
-				EE4CD5C331325B24DD8E881D76135649 /* Sources */,
+				5E2AC3C0B236126E7218822A7A88B775 /* Sources */,
 				B28CA38ED0B7D350D6A228AB76AC2C8B /* Frameworks */,
 				59C26C74A952575E7830F24B1027802A /* Headers */,
 			);
@@ -333,6 +335,15 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5E2AC3C0B236126E7218822A7A88B775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F70C0613AFD4D68980FD751D394BFE93 /* SJTwitterTagInputTextView-dummy.m in Sources */,
+				8B3691C10B11811F9DC8B38C7BEA910F /* SJTwitterTagInputTextView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		807C57CC9F4CCEC36837EC499B290A9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,19 +352,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE4CD5C331325B24DD8E881D76135649 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B792A827D95856381566B5C5DCA6BC14 /* SJTwitterTagInputTextView-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F85ED958B7779C820F4CD6B8C06D7F02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				041340F91E1247FE00AEC7E1 /* SJTwitterTagInputTextView.swift in Sources */,
 				884A3BE9BDF6526E216840F32EAD8023 /* Pods-SJTwitterTagInputTextView_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,7 +376,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ABC29003634E798B5B43A947E8E28A34 /* Pods-SJTwitterTagInputTextView_Example.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -628,7 +629,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1643D5C4F0172753C9D7348156375095 /* Pods-SJTwitterTagInputTextView_Example.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
