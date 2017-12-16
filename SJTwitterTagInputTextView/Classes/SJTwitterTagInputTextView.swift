@@ -1,23 +1,25 @@
 //
-//  SJTwitterTagInputTextView.swift
-//  SJTagTextViewSwift2
+//  SJTagTextView.swift
+//  TagsDemo
 //
-//  Created by Mac on 12/27/16.
+//  Created by Mac on 12/20/16.
 //  Copyright © 2016 Sumit Jagdev. All rights reserved.
 //
 
 import UIKit
 
-public typealias SJ_CompletionHandler = ( isSuccess: Bool,  error: NSError?,  response: NSDictionary?)->Void
+typealias SJ_CompletionHandler = (_ isSuccess: Bool, _ error: NSError?, _ response: NSDictionary?)->Void
+
 
 public protocol SJTwitterTagInputTextViewDelegate: class {
     func didSearchWithHashTag(tagString: String)
     func didSearchWithAtTag(tagString: String)
 }
 
+
 public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBInspectable var textViewBackgroundColor : UIColor = UIColor.whiteColor() {
+    @IBInspectable var textViewBackgroundColor : UIColor = UIColor.white {
         didSet {
             self.backgroundColor = textViewBackgroundColor
         }
@@ -70,10 +72,10 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
     }
     
     func commonInit() {
-        self.backgroundColor = UIColor.lightGrayColor()
+        self.backgroundColor = UIColor.lightGray
         textView = UITextView()
         textView.delegate = self
-        textView.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
+        textView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
         self.addSubview(textView)
         
         //==========================================
@@ -81,31 +83,32 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
         resultTableView = UITableView()
         resultTableView.delegate = self
         resultTableView.dataSource = self
-        resultTableView.autoresizingMask = [UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
+        resultTableView.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
         self.addSubview(resultTableView)
-        resultTableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellIdentifier)
+        resultTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: cellIdentifier)
         
+
         
-        self.layer.borderColor = UIColor.darkGrayColor().CGColor
+        self.layer.borderColor = UIColor.darkGray.cgColor
         self.layer.borderWidth = 2.0
         
         
-        resultTableView.layer.borderColor = UIColor.darkGrayColor().CGColor
+        resultTableView.layer.borderColor = UIColor.darkGray.cgColor
         resultTableView.layer.borderWidth = 2.0
         
         
-        textView.backgroundColor = UIColor.whiteColor()
-        resultTableView.backgroundColor = UIColor.whiteColor()
+        textView.backgroundColor = UIColor.white
+        resultTableView.backgroundColor = UIColor.white
     }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        resultTableView.userInteractionEnabled = true
+        resultTableView.isUserInteractionEnabled = true
         resultTableView.allowsSelection = true
         let allConstraints = self.constraints
         for const in allConstraints {
             if const.identifier == heightConstId {
-                //                const.priority = UILayoutPriorityDefaultLow
+//                const.priority = UILayoutPriorityDefaultLow
                 heightConstraintOfSelf = const
             }
         }
@@ -117,40 +120,42 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
         frame.origin = CGPoint.zero
         textView.frame = frame
         
-        topConstraintOfTextView = textView.addTopConstraint(toView: self, attribute: .Top, relation: .Equal, constant: 0.0)
+        topConstraintOfTextView = textView.addTopConstraint(toView: self, constant: 0.0)
         leadingConstraintOfTextView = textView.addLeadingConstraint(toView: self, constant: 0.0)
         trailingConstraintOfTextView = textView.addTrailingConstraint(toView: self, constant: 0.0)
-        heightConstraintOfTextView = textView.addHeightConstraint(frame.size.height)
+        heightConstraintOfTextView = textView.addHeightConstraint(heightConstant: frame.size.height)
         
         //==========================================
         
         frame.origin.y = 100
         frame.size.height = 100
         resultTableView.frame = frame
-        self.bringSubviewToFront(resultTableView)
+        self.bringSubview(toFront: resultTableView)
         
         topConstraintOfTextView = resultTableView.addTopConstraint(toView: self, constant: heightConstraintOfTextView.constant)
         trailingConstraintOfTableView = resultTableView.addTrailingConstraint(toView: self, constant: 0.0)
         bottomConstraintOfTableView = resultTableView.addBottomConstraint(toView: self, constant: 0.0)
         leadingConstraintOfTableView = resultTableView.addLeadingConstraint(toView: self, constant: 0.0)
+//        heightConstraintOfTableView = resultTableView.addHeightConstraint(heightConstant: 100)
         
         resultTableView.reloadData()
     }
     
-    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "@" {
+            
+        }
         
         return true
     }
     
-    
-    public func textViewDidChange(textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
+//        textView.validateForTags()
         var currentWord = textView.getCurrentWord()
-        currentWord = currentWord.stringByReplacingOccurrencesOfString("\n", withString: " ")
+        currentWord = currentWord.replacingOccurrences(of: "\n", with: " ")
         
-        //        print("Current Word : ", currentWord)
-        currentWord = currentWord.stringByReplacingOccurrencesOfString(" ", withString: "")
-        
+//        print("Current Word : ", currentWord)
+        currentWord = currentWord.replacingOccurrences(of: " ", with: "")
         
         if currentWord.hasPrefix("@")  || currentWord.hasPrefix("#") {
             if currentWord.hasPrefix("@") {
@@ -158,17 +163,18 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
             }else{
                 isAtTag = false
             }
-            self.callServiceFor(currentWord)
+            self.callServiceFor(hashTagString: currentWord)
         }else{
             filteredObjectList = []
         }
-        
+    
         resultTableView.reloadData()
         
         textView.validateForTagsColor()
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if filteredObjectList.count > 0 {
             if heightConstraintOfSelf != nil && heightConstraintOfTextView != nil {
@@ -186,18 +192,17 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
         return 0
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell : UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell : UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
         if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
-        cell.backgroundColor = UIColor.clearColor()
-        cell.userInteractionEnabled = true
-        cell.selectionStyle = .Default
+        cell.backgroundColor = UIColor.clear
+        cell.isUserInteractionEnabled = true
+        cell.selectionStyle = .default
         cell.textLabel?.text = "Cell \(indexPath.row)"
-        cell.textLabel?.font = UIFont.systemFontOfSize(12)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         if filteredObjectList.count > indexPath.row{
             cell?.textLabel?.text = filteredObjectList[indexPath.row]
         }
@@ -205,16 +210,17 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
         return cell
     }
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("Selected row index : ", indexPath.row)
         if filteredObjectList.count > indexPath.row {
             
             let replacementString = filteredObjectList[indexPath.row]
-            
+
             var newReplacementString = NSString(format: "#%@ ", replacementString) as String
             if isAtTag == true {
                 newReplacementString = NSString(format: "@%@ ", replacementString) as String
             }
-            textView.changeCurrentWordWith(newReplacementString as NSString)
+            textView.changeCurrentWordWith(newWordString: newReplacementString as NSString)
             filteredObjectList = []
             tableView .reloadData()
         }
@@ -222,40 +228,43 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
         
     }
     
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 25
     }
     func callServiceFor(hashTagString : String) {
-        let newArray = hashTagString.componentsSeparatedByString("\n")
-        
+        let newArray = hashTagString.components(separatedBy: "\n")
         let hashTag = newArray.last
         
         if (hashTag?.isEmpty)! {
-            //            searchResultTableView.isHidden = true
+//            searchResultTableView.isHidden = true
             filteredObjectList = []
             resultTableView.reloadData()
             return
         }
-        
+       
         var strTag : String! = ""
         if (hashTag?.hasPrefix("@"))! {
-            strTag =  hashTag?.stringByReplacingOccurrencesOfString("@", withString: "")
+            strTag =  hashTag?.replacingOccurrences(of: "@", with: "")
             if delegate != nil {
-                delegate?.didSearchWithAtTag(strTag)
+                delegate?.didSearchWithAtTag(tagString: strTag)
             }
             
         }else if (hashTag?.hasPrefix("#"))! {
-            strTag =  hashTag?.stringByReplacingOccurrencesOfString("#", withString: "")
+            strTag =  hashTag?.replacingOccurrences(of: "#", with: "")
             if delegate != nil {
-                delegate?.didSearchWithHashTag(strTag)
+                delegate?.didSearchWithHashTag(tagString: strTag)
             }
         }
         
         let fullText : NSString = textView.text as NSString
-        rangeOfTagString  = fullText.rangeOfString(strTag)
-        
+        rangeOfTagString  = fullText.range(of: strTag)
         rangeOfTagString = textView.getCurrentWordRange()
         
+
+        
+//        let predicate = NSPredicate(format: "SELF contains[cd] %@", strTag!)
+//        filteredObjectList = allObjectList.filter { predicate.evaluate(with: $0) }
+//        resultTableView.reloadData()
     }
     
     public func getAllAtTags() -> [String] {
@@ -271,7 +280,7 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
         }
         return textView.getAllHashTags()
     }
-    
+
 }
 
 
@@ -280,8 +289,8 @@ public class SJTwitterTagInputTextView: UIView, UITextViewDelegate, UITableViewD
 //============================================================
 
 extension String {
-    public func countryName() -> String {
-        if let name = (NSLocale.currentLocale() as NSLocale).displayNameForKey(NSLocaleCountryCode, value: self){
+    func countryName() -> String {
+        if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: self) {
             // Country name was found
             return name
         } else {
@@ -289,19 +298,8 @@ extension String {
             return self
         }
     }
-    func character(at: Int) -> String {
-        var char : String = ""
-        var charInd = 0
-        for index in self.characters.indices {
-            //            print(self[index])
-            if charInd == at {
-                char = String(self[index])
-            }
-            charInd += 1
-        }
-        return char
-    }
 }
+
 
 extension UITextView {
     
@@ -309,21 +307,17 @@ extension UITextView {
         
         let selectedRange : UITextRange = self.selectedTextRange!
         let textPosition : UITextPosition = selectedRange.start
-        return self.offsetFromPosition(self.beginningOfDocument, toPosition: textPosition)
+        return self.offset(from: self.beginningOfDocument, to: textPosition)
     }
     
     func setCurserAtPosition(position : NSInteger) {
         let str : NSString = text as NSString
         if position < str.length {
-            let textPosition : UITextPosition = self.positionFromPosition(self.beginningOfDocument, offset: position)!
-            
-            self.selectedTextRange = self.textRangeFromPosition(textPosition, toPosition: textPosition)
-            
+            let textPosition : UITextPosition = self.position(from: self.beginningOfDocument, offset: position)!
+            self.selectedTextRange = self.textRange(from: textPosition, to: textPosition)
         }else{
-            let textPosition : UITextPosition = self.positionFromPosition(self.beginningOfDocument, offset: str.length)!
-            
-            self.selectedTextRange = self.textRangeFromPosition(textPosition, toPosition: textPosition)
-            
+            let textPosition : UITextPosition = self.position(from: self.beginningOfDocument, offset: str.length)!
+            self.selectedTextRange = self.textRange(from: textPosition, to: textPosition)
         }
         
     }
@@ -331,33 +325,33 @@ extension UITextView {
     func getCurrentWord() -> String {
         let cursorOffset : NSInteger = self.curserPosition()
         let text : NSString = self.text as NSString
-        let substring : NSString = text.substringToIndex(cursorOffset)
-        var lastWord = substring.componentsSeparatedByString(" ").last
-        lastWord = lastWord?.componentsSeparatedByString("\n").last
+        let substring : NSString = text.substring(to: cursorOffset) as NSString
+        var lastWord = substring.components(separatedBy: " ").last
+        lastWord = lastWord?.components(separatedBy: "\n").last
         return lastWord!
     }
     
     func getCurrentWordRange() -> NSRange {
         let cursorOffset : NSInteger = self.curserPosition()
         let text : NSString = self.text as NSString
-        let substring : NSString = text.substringToIndex(cursorOffset)
+        let substring : NSString = text.substring(to: cursorOffset) as NSString
         
         let endIndex = substring.length
-        let lastWord = substring.componentsSeparatedByString(" ").last
+        let lastWord = substring.components(separatedBy: " ").last
         var lastWordStr : NSString = NSString(string: lastWord!)
         var startIndex = endIndex  - lastWordStr.length
         
-        if lastWordStr.containsString("\n@") == true {
+        if lastWordStr.contains("\n@") == true {
             startIndex += 2
-        }else if lastWordStr.containsString("\n#") == true {
+        }else if lastWordStr.contains("\n#") == true {
             startIndex += 2
-        }else if lastWordStr.containsString("@") == true {
+        }else if lastWordStr.contains("@") == true {
             startIndex += 1
-        }else if lastWordStr.containsString("#") == true {
+        }else if lastWordStr.contains("#") == true {
             startIndex += 1
         }
-        lastWordStr = lastWordStr.stringByReplacingOccurrencesOfString("@", withString: "")
-        lastWordStr = lastWordStr.stringByReplacingOccurrencesOfString("#", withString: "")
+        lastWordStr = lastWordStr.replacingOccurrences(of: "@", with: "") as NSString
+        lastWordStr = lastWordStr.replacingOccurrences(of: "#", with: "") as NSString
         let wordRange : NSRange = NSMakeRange(startIndex, lastWordStr.length)
         
         return wordRange
@@ -365,8 +359,8 @@ extension UITextView {
     
     
     func getAllAtTags() -> [String] {
-        let string = text.stringByReplacingOccurrencesOfString("\n", withString: " ")
-        let stringArray = string.componentsSeparatedByString(" ")
+        let string = text.replacingOccurrences(of: "\n", with: " ")
+        let stringArray = string.components(separatedBy: " ")
         var tagsArray : [String] = []
         for tag in stringArray {
             if tag.hasPrefix("@") || tag.hasPrefix(" @") || tag.hasPrefix("\n@"){
@@ -378,8 +372,8 @@ extension UITextView {
     }
     
     func getAllHashTags() -> [String] {
-        let string = text.stringByReplacingOccurrencesOfString("\n", withString: " ")
-        let stringArray = string.componentsSeparatedByString(" ")
+        let string = text.replacingOccurrences(of: "\n", with: " ")
+        let stringArray = string.components(separatedBy: " ")
         var tagsArray : [String] = []
         for tag in stringArray {
             if tag.hasPrefix("#") || tag.hasPrefix(" #") || tag.hasPrefix("\n#"){
@@ -393,9 +387,9 @@ extension UITextView {
     func changeCurrentWordWith(newWordString : NSString) {
         let curserIndex = self.curserPosition()
         let textNSString : NSString = self.text as NSString
-        //        let preString : NSString = textNSString.substring(to: curserIndex) as NSString
+//        let preString : NSString = textNSString.substring(to: curserIndex) as NSString
         var startIndex : NSInteger = 0
-        for (index, element) in self.text.characters.enumerate() {
+        for (index, element) in self.text.characters.enumerated() {
             if (element == " " || element == "\n") && curserIndex > index{
                 startIndex = index + 1
             }
@@ -404,12 +398,11 @@ extension UITextView {
         let nsrange = NSMakeRange(startIndex, curserIndex - startIndex)
         
         if nsrange.location + nsrange.length <= textNSString.length {
-            let newString = textNSString.stringByReplacingCharactersInRange(nsrange, withString: newWordString as String)
-            
+            let newString = textNSString.replacingCharacters(in: nsrange, with: newWordString as String)
             
             self.text = newString
             
-            self.setCurserAtPosition(startIndex + newWordString.length)
+            self.setCurserAtPosition(position: startIndex + newWordString.length)
         }
         
         
@@ -422,18 +415,17 @@ extension UITextView {
         if self.text.isEmpty {
             return
         }
-        
         var startIndex : Int = 0
         repeat {
-            let elementOuter = self.text.character(startIndex)
+            let elementOuter = self.text[self.text.index(self.text.startIndex, offsetBy: startIndex)]
             var endIndex : Int = startIndex
             var isFound : Bool = false
             if elementOuter == "@" || elementOuter == "#" {
                 repeat {
-                    let elementInner = self.text.character(endIndex)
+                    let elementInner = self.text[self.text.index(self.text.startIndex, offsetBy: endIndex)]
                     if elementInner == " " || elementInner == "\n" {
-                        //                        print("Strat Index : ", startIndex, " End Index : ", endIndex, " String Length : ", string.length)
-                        string.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSMakeRange(startIndex, endIndex - startIndex))
+//                        print("Strat Index : ", startIndex, " End Index : ", endIndex, " String Length : ", string.length)
+                        string.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.blue, range: NSMakeRange(startIndex, endIndex - startIndex))
                         isFound = true
                     }
                     endIndex += 1
@@ -445,12 +437,12 @@ extension UITextView {
             startIndex += 1
         } while startIndex < string.length
         
-        
+
         
         self.attributedText = string
-        self.setCurserAtPosition(curserIndex)
-        
-        
+        self.setCurserAtPosition(position: curserIndex)
+
+
     }
     
     
@@ -482,8 +474,8 @@ extension UIView {
      
      :returns: An array of 4 x NSLayoutConstraint objects (top, leading, bottom, trailing) if the superview exists otherwise an empty array
      */
-    
-    public func fillSuperView(edges: UIEdgeInsets = UIEdgeInsetsZero) -> [NSLayoutConstraint] {
+    @discardableResult
+    public func fillSuperView(_ edges: UIEdgeInsets = UIEdgeInsets.zero) -> [NSLayoutConstraint] {
         
         var constraints: [NSLayoutConstraint] = []
         
@@ -519,10 +511,10 @@ extension UIView {
      
      :returns: The created `NSLayoutConstraint` for this leading attribute relation
      */
-    
-    public func addLeadingConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .Leading, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addLeadingConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .leading, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Leading, toView: view, attribute: attribute, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .leading, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -545,9 +537,10 @@ extension UIView {
      
      :returns: The created `NSLayoutConstraint` for this trailing attribute relation
      */
-    public func addTrailingConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .Trailing, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addTrailingConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .trailing, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Trailing, toView: view, attribute: attribute, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .trailing, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -572,10 +565,10 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this left attribute relation
      */
-    
-    public func addLeftConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .Left, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addLeftConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .left, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Left, toView: view, attribute: attribute, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .left, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -600,10 +593,10 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this right attribute relation
      */
-    
-    public func addRightConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .Right, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addRightConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .right, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Right, toView: view, attribute: attribute, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .right, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -628,10 +621,10 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this top edge layout relation
      */
-    
-    public func addTopConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .Top, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addTopConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .top, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Top, toView: view, attribute: attribute, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .top, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -656,10 +649,10 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this bottom edge layout relation
      */
-    
-    public func addBottomConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .Bottom, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addBottomConstraint(toView view: UIView?, attribute: NSLayoutAttribute = .bottom, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Bottom, toView: view, attribute: attribute, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .bottom, toView: view, attribute: attribute, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -680,10 +673,10 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this center X layout relation
      */
-    
-    public func addCenterXConstraint(toView view: UIView?, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addCenterXConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .CenterX, toView: view, attribute: .CenterX, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .centerX, toView: view, attribute: .centerX, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -704,10 +697,10 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this center Y layout relation
      */
-    
-    public func addCenterYConstraint(toView view: UIView?, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addCenterYConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .CenterY, toView: view, attribute: .CenterY, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .centerY, toView: view, attribute: .centerY, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
@@ -728,25 +721,25 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this width layout relation
      */
-    
-    public func addWidthConstraint(toView view: UIView?, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addWidthConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Width, toView: view, attribute: .Width, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .width, toView: view, attribute: .width, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
     }
     
     
-    
+    @discardableResult
     public func addWidthConstraint(widthConstant: CGFloat) -> NSLayoutConstraint {
         
-        let constraint =  NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: widthConstant)
+        let constraint =  NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: widthConstant)
         addConstraintToSuperview(constraint)
         
         return constraint
     }
-    
+
     
     // MARK: - Height
     
@@ -762,35 +755,35 @@ extension UIView {
      
      :returns: The created NSLayoutConstraint for this height layout relation
      */
-    
-    public func addHeightConstraint(toView view: UIView?, relation: NSLayoutRelation = .Equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
+    @discardableResult
+    public func addHeightConstraint(toView view: UIView?, relation: NSLayoutRelation = .equal, constant: CGFloat = 0.0) -> NSLayoutConstraint {
         
-        let constraint = createConstraint(attribute: .Height, toView: view, attribute: .Height, relation: relation, constant: constant)
+        let constraint = createConstraint(attribute: .height, toView: view, attribute: .height, relation: relation, constant: constant)
         addConstraintToSuperview(constraint)
         
         return constraint
     }
     
-    
+    @discardableResult
     public func addHeightConstraint(heightConstant: CGFloat) -> NSLayoutConstraint {
         
-        let constraint =  NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: heightConstant)
+        let constraint =  NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: heightConstant)
         addConstraintToSuperview(constraint)
         
         return constraint
     }
-    
+
     // MARK: - Private
     
     /// Adds an NSLayoutConstraint to the superview
-    private func addConstraintToSuperview(constraint: NSLayoutConstraint) {
+    fileprivate func addConstraintToSuperview(_ constraint: NSLayoutConstraint) {
         
         translatesAutoresizingMaskIntoConstraints = false
         superview?.addConstraint(constraint)
     }
     
     /// Creates an NSLayoutConstraint using its factory method given both views, attributes a relation and offset
-    private func createConstraint(attribute attr1: NSLayoutAttribute, toView: UIView?, attribute attr2: NSLayoutAttribute, relation: NSLayoutRelation, constant: CGFloat) -> NSLayoutConstraint {
+    fileprivate func createConstraint(attribute attr1: NSLayoutAttribute, toView: UIView?, attribute attr2: NSLayoutAttribute, relation: NSLayoutRelation, constant: CGFloat) -> NSLayoutConstraint {
         
         let constraint = NSLayoutConstraint(
             item: self,

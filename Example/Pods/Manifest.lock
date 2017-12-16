@@ -1,16 +1,16 @@
 PODS:
-  - SJTwitterTagInputTextView (0.1.0)
+  - SJTwitterTagInputTextView (0.1.1)
 
 DEPENDENCIES:
   - SJTwitterTagInputTextView (from `../`)
 
 EXTERNAL SOURCES:
   SJTwitterTagInputTextView:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  SJTwitterTagInputTextView: 998bc6897cbc008782712b133ac022e6c1ef28b1
+  SJTwitterTagInputTextView: b63cf90831744bc2e05aa1226f46dd894ac7fc4e
 
 PODFILE CHECKSUM: 67856ff9dca04332e0e761ce3157ad28dbdb25ce
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.1
